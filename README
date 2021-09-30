@@ -1,0 +1,16 @@
+Installation - macOS and Windows
+Install Python 3 on your host computer.
+
+Install Node.js v14 or higher on your host computer.
+
+For Windows users, install the Additional Node.js tools when prompted. You may skip this setup if you have Visual Studio 2015 or more.
+Install the CLI tools via:
+
+npm install -g edge-impulse-cli --force
+You should now have the tools available in your PATH.
+
+If you haven't already, create an edge impulse account. Many of our CLI tools require the user to log in to connect with the Edge Impulse Studio.
+
+
+
+edge-impulse-data-forwarder --baud-rate 57600 --frequency 100

@@ -1,0 +1,3 @@
+*.zip
+ml_model/*
+app_ml/*
