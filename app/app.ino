@@ -14,6 +14,9 @@ Sodaq_LSM303AGR accel;
 
 void setup() 
 {
+    pinMode(BUILTIN_LED, OUTPUT);
+    digitalWrite(BUILTIN_LED, HIGH);
+    
     SerialPort.begin(57600);
     delay(1000);
 
@@ -34,24 +37,16 @@ void setup()
 
     accel.enableMagnetometer(Sodaq_LSM303AGR::MagHighResMode, Sodaq_LSM303AGR::Hz100, Sodaq_LSM303AGR::Continuous);
     accel.enableAccelerometer( Sodaq_LSM303AGR::NormalMode, Sodaq_LSM303AGR::HrNormalLowPower25Hz,Sodaq_LSM303AGR::XYZ, Sodaq_LSM303AGR::Scale2g,  true);
-    
-
-
-    //pinMode(MAG_INT, INPUT_PULLDOWN);
-    //attachInterrupt(MAG_INT, magInterrupt, RISING);
+    digitalWrite(BUILTIN_LED, LOW);
 }
 
 void loop() {
-  // Led blinking.
-//  digitalWrite(13, HIGH);
-
-//  digitalWrite(13, LOW);
+  digitalWrite(BUILTIN_LED, HIGH);
 
 
     if (millis() > last_interval_ms + INTERVAL_MS) {
         last_interval_ms = millis();
 
-        //IMU.readAcceleration(x, y, z);
 
         Serial.print(accel.getX() * CONVERT_G_TO_MS2);
         Serial.print('\t');
@@ -61,7 +56,7 @@ void loop() {
     }
 
 
-  // Output data.
+// Output data.
 //  SerialPort.print("| Acc[mg]: ");
 //  SerialPort.print(accel.getX());
 //  SerialPort.print(" ");
@@ -78,4 +73,5 @@ void loop() {
 ////  SerialPort.print(" | Temp[C]: ");
 ////  SerialPort.print(temperature, 2);
 //  SerialPort.println(" |");
+digitalWrite(BUILTIN_LED, LOW);
 }
